@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  pg-database:
+    image: postgres:13
+    container_name: pg-database
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - dtc_postgres_volume_local:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - pg-database-network
+
+networks:
+  pg-database-network:
+
+volumes:
+  dtc_postgres_volume_local:
